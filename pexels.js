@@ -28,7 +28,7 @@ const getNewImage = function (query) {
                   class="bd-placeholder-img card-img-top"
                 />
                 <div class="card-body">
-                  <h5 class="card-title">${photo.photographer}</h5>
+                <a href="./detail.html?imageId=${photo.id}"><h5 class="card-title">${photo.photographer}</h5></a>
                   <p class="card-text">
                     ${photo.alt}
                   </p>
@@ -39,6 +39,8 @@ const getNewImage = function (query) {
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
                       >
                         View
                       </button>
@@ -52,6 +54,23 @@ const getNewImage = function (query) {
                     <small class="text-muted">${photo.id}</small>
                   </div>
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src=${photo.src.medium} />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
               </div>`
         row.appendChild(col)
       });
