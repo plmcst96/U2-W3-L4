@@ -1,23 +1,23 @@
 
 const loadFirstFun = function () {
-    fetch('https://api.pexels.com/v1/search?query=dogs', {
-        headers: {
-            Authorization: "Hft5gxEJ164U0nzo9UblQrN8lrTG26FboMC1kBE0JhQUSLj8VBOeHkcq"
-        }
+  fetch('https://api.pexels.com/v1/search?query=dogs', {
+    headers: {
+      Authorization: "Hft5gxEJ164U0nzo9UblQrN8lrTG26FboMC1kBE0JhQUSLj8VBOeHkcq"
+    }
+  })
+    .then((res) => {
+      if (res.ok) {
+        console.log('Ecco il res', res)
+        return res.json()
+      } else {
+        throw new Error('Errore nel contattare il server')
+      }
     })
-        .then((res) => {
-            if (res.ok) {
-                console.log('Ecco il res', res)
-                return res.json()
-            } else {
-                throw new Error('Errore nel contattare il server')
-            }
-        })
-        .then((images) => {
-            console.log(images)
-            for (let i = 0; i < images.photos.length; i++) {
-                const row = document.getElementById('row-image')
-                row.innerHTML += ` <div class="col-md-4">
+    .then((images) => {
+      console.log(images)
+      for (let i = 0; i < images.photos.length; i++) {
+        const row = document.getElementById('row-image')
+        row.innerHTML += ` <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
             <a href="./details-image.html"><img
                 src=${images.photos[i].src.medium}
@@ -51,32 +51,32 @@ const loadFirstFun = function () {
             </div>
           </div>`;
 
-            }
-        })
-        .catch((err) => {
-            console.log('errore', err)
-        })
+      }
+    })
+    .catch((err) => {
+      console.log('errore', err)
+    })
 }
 
 const loadSecondFun = function () {
-    fetch('https://api.pexels.com/v1/search?query=landscape', {
-        headers: {
-            Authorization: "Hft5gxEJ164U0nzo9UblQrN8lrTG26FboMC1kBE0JhQUSLj8VBOeHkcq"
-        }
+  fetch('https://api.pexels.com/v1/search?query=landscape', {
+    headers: {
+      Authorization: "Hft5gxEJ164U0nzo9UblQrN8lrTG26FboMC1kBE0JhQUSLj8VBOeHkcq"
+    }
+  })
+    .then((res) => {
+      if (res.ok) {
+        console.log('Ecco il res', res)
+        return res.json()
+      } else {
+        throw new Error('Errore nel contattare il server')
+      }
     })
-        .then((res) => {
-            if (res.ok) {
-                console.log('Ecco il res', res)
-                return res.json()
-            } else {
-                throw new Error('Errore nel contattare il server')
-            }
-        })
-        .then((image) => {
-            console.log(image)
-            for (let i = 0; i < image.photos.length; i++) {
-                const row = document.getElementById('row-image')
-                row.innerHTML += ` <div class="col-md-4">
+    .then((image) => {
+      console.log(image)
+      for (let i = 0; i < image.photos.length; i++) {
+        const row = document.getElementById('row-image')
+        row.innerHTML += ` <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <img
                 src=${image.photos[i].src.medium}
@@ -110,16 +110,16 @@ const loadSecondFun = function () {
             </div>
           </div>`;
 
-            }
-        })
-        .catch((err) => {
-            console.log('errore', err)
-        })
+      }
+    })
+    .catch((err) => {
+      console.log('errore', err)
+    })
 }
 
 const removeCardImg = function (button) {
-    const card = button.closest(".col-md-4")
-    card.remove()
+  const card = button.closest(".col-md-4")
+  card.remove()
 }
 
 
